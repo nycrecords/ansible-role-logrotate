@@ -1,2 +1,10 @@
-tests/.vagrant
-test.retry
+__pycache__
+*.pyc
+*.rst
+*.log
+.env
+*.retry
+*/__pycache__
+.vscode/
+molecule/resources/roles/*
+!molecule/resources/roles/.gitkeep

@@ -1,14 +1,24 @@
----
 language: python
-python: "2.7"
-before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq python-apt python-pycurl
+python:
+- 3.7
+env:
+  global:
+  - MOLECULE_DEBUG: 'true'
+  - ROLE_NAME: logrotate
+  - EC2_REGION: us-east-1
+  - secure: Wg77IaRjYECYUwVUB+l5DtkFFc0v3dgPkLouh4repzv568jpoEz6BFq5Pu64MhHJkV5omjnPtzkVfHrhN5lLykUfhDmF1dxRFjnJrbjHoFA25D0olpIfB0VpB7zdnDcA23FBeB4Q/34J4Muid/ZD1pWoDMdfsewc/+CXV5Cr1f0Av5DDFIXrDU7ARSodQzhAfiT1AD+mJTOhSDo48OK84RJgyC+QGXRPKE0fiBFhb1KaUDrKMY9xzWynPv3+WwFrpVQF9TVTziKyHeX6QRkmcnt+eEbyleBbmoNfQj9RX+V+hCjJQw2zuuyorpJhQ7ChG4gg3H2EXk5wPdD8aAv+BnwPLoev04GSTDVpFhMwXAfq6uaJujTbdZzzybuhHYSqQJq70ekoEydXS5BpK7/TmSW4jtl7FQSE6EQVb/AjlEyf+UfvOcj/Oe8wgWKf9BuUALTPUONpfCbmqkfsDcPUwKToXocUoDqiv3sj+CvbySyi3qGx+QGto3rbuM7sMruMd5pLV5Y/ZkJdmDwBHozSyOeZBuL0+YkdBsu+3qnskblSr2CVz4bJm/4jwexwhTsnsplqryOk01sCZU13/0n8BsP581QrDxG9FVoT8z5OBvOU+Rl6VJZh3jaq7DIZHw9+iprEHqcX0vcFKQCqQdbTJGUTMH7BnhIh9KvIbBoeo4Q=
+  - secure: U08Am3o4ubsKxjJ2vR4Tb2qE20w10cPntz5vrrmf/gjbB1a2/pyOucwFl0ai2kCMDyVN6u/aDBLW8tlye1ei/aVKngJTpuREKOZz2l7kkLaNESOZm5d0gJIdq8iIIAoV66Jq0b/mjCEPEf2oXqPLnyXcZBrBZyGUZTSCS/iafIYkK5u2z1JyjpnPkA3m2t6DjT+LK47O5j7MDvjOB2GGpV+5vnNR7jbnkwXt1YdV0YKHbPM2reXTpcHv7iy4YwITAifSSLnxu00UJtJTEK8OMn8hLo1KbE6UHahlr3wyXF8gMgIsDs/0Nay8/kTDEafTdRciAX6FsWJrI9bDWLomFZhTP9BuapHvlksQERQAbID9yO67fVpbwhPBSsy64TtXoyICGOKVENkPh9Nwjlh3d5re21M0UJOBHAXbIwKlmwKdI+LbuE4ay8kfUvXTZPrZqsW+D8wofoE4PV7TKog4VJMSSLrPbkdwB0cA4UrILZ+7qXw4G1IqtqoGuSbe6JfDY3zFNEGn9RoIH5Nrx4VEx/5KtnSO2UKDGUjgklUBHdBTcLQ1NccizIPJ6V2Xxj/lE/24S5XWLOB+gA/Qj68nEhnNmjq1+d3pPpo+uTQcUPIGOLg3bJwVsLJaOxB2NGDP5bvk1lzCScsZlMLWPZILiuMU+AGj0BiMpU34fWiLqG4=
 install:
-  - pip install ansible
+- pip install pipenv
+- pipenv install
+- aws configure set aws_access_key_id $AWS_ACCESS_KEY
+- aws configure set aws_secret_access_key $AWS_SECRET_KEY
+- aws configure set default.region $EC2_REGION
+- aws configure list
 script:
-  - "printf '[defaults]\nroles_path = ../' > ansible.cfg"
-  - ansible-playbook -i tests/inventory --syntax-check tests/test.yml
-  - ansible-playbook -i tests/inventory --connection=local --become -vvvv tests/test.yml
+- molecule create --scenario-name aws
+- molecule converge --scenario-name aws
+- molecule verify --scenario-name aws
+- molecule destroy --scenario-name aws
 notifications:
-  email: false
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

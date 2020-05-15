@@ -1,0 +1,3 @@
+---
+logrotate_hourly_cron_location: /etc/cron.hourly/logrotate
+logrotate_daily_cron_location: /etc/cron.daily/logrotate

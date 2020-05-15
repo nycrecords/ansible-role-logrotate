@@ -1,23 +1,27 @@
 # {{ ansible_managed }}
 
 {% if 'path' in item %}
-"{{ item.path }}"
+{{ item.path }}
 {% elif 'paths' in item %}
 {% for path in item.paths %}
-"{{ path }}"
+{{ path }}
 {% endfor %}
 {% endif %}
 {
-  {% if item.options is defined -%}
-  {% for option in item.options -%}
-  {{ option }}
-  {% endfor -%}
-  {% endif %}
-  {%- if item.scripts is defined -%}
-  {%- for name, script in item.scripts.items() -%}
-  {{ name }}
+    {% if item.options is defined -%}
+    {% for option in item.options -%}
+    {{ option }}
+    {% endfor -%}
+    {% endif %}
+    {%- if item.scripts is defined -%}
+    {%- for name, scripts in item.scripts.items() -%}
+    {{ name }}
+    {% for script in scripts %}
     {{ script }}
-  endscript
-  {% endfor -%}
-  {% endif -%}
+    {% endfor -%}
+    endscript
+    {% endfor -%}
+    {% endif -%}
 }
+
+# {{ ansible_managed }}

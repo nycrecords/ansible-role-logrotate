@@ -1,11 +1,24 @@
 ---
-- name: nickhammond.logrotate | Install logrotate
+- name: Install logrotate
   package:
     name: logrotate
     state: present
-  when: logrotate_scripts is defined and logrotate_scripts|length > 0
 
-- name: nickhammond.logrotate | Setup logrotate.d scripts
+- name: Check for logrotate daily cronjob
+  stat:
+    path: "{{ logrotate_daily_cron_location }}"
+  register: daily_cron_job
+
+- name: Setup logrotate hourly_cronjob
+  file:
+    src: "{{ logrotate_daily_cron_location }}"
+    dest: "{{ logrotate_hourly_cron_location }}"
+    owner: root
+    group: root
+    state: link
+  when: logrotate_support_hourly_rotation and daily_cron_job.stat.exists
+
+- name: Setup logrotate.d scripts
   template:
     src: logrotate.d.j2
     dest: "{{ logrotate_conf_dir }}{{ item.name }}"
