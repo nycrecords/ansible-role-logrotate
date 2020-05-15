@@ -1,15 +1,22 @@
-# logrotate
+Ansible Role: Logrotate
+===================
 
-[![Build Status](https://travis-ci.org/nickhammond/ansible-logrotate.svg?branch=master)](https://travis-ci.org/nickhammond/ansible-logrotate)
+![GitHub](https://img.shields.io/github/license/nycrecords/ansible-role-logrotate)
+[![Build Status](https://travis-ci.com/nycrecords/ansible-role-logrotate.svg?branch=master)](https://travis-ci.com/nycrecords/ansible-role-logrotate)
+[![Galaxy](https://img.shields.io/badge/galaxy-nycrecords.logrotate-blue.svg)](https://galaxy.ansible.com/nycrecords/logrotate)
+![Ansible](https://img.shields.io/ansible/role/d/45553)
+![Ansible](https://img.shields.io/ansible/quality/45553)
 
 Installs logrotate and provides an easy way to setup additional logrotate scripts by
 specifying a list of directives.
 
-## Requirements
+Requirements
+------------
 
-None
+Ansible 2.4 or higher
 
-## Role Variables
+Role Variables
+--------------
 
 **logrotate_scripts**: A list of logrotate scripts and the directives to use for the rotation.
 
@@ -19,7 +26,7 @@ None
 * options - List of directives for logrotate, view the logrotate man page for specifics
 * scripts - Dict of scripts for logrotate (see Example below)
 
-```
+```yaml
 logrotate_scripts:
   - name: rails
     path: "/srv/current/log/*.log"
@@ -32,7 +39,7 @@ logrotate_scripts:
       - copytruncate
 ```
 
-```
+```yaml
 logrotate_scripts:
   - name: rails
     paths:
@@ -47,15 +54,17 @@ logrotate_scripts:
       - copytruncate
 ```
 
-## Dependencies
+Dependencies
+------------
 
 None
 
-## Example Playbook
+Example Playbook
+----------------
 
 Setting up logrotate for additional Nginx logs, with postrotate script.
 
-```
+```yaml
 - hosts: all
   vars:
     logrotate_scripts:
@@ -84,22 +93,25 @@ Setting up logrotate for additional Nginx logs, with postrotate script.
     - ansible-logrotate
 ```
 
-## Testing locally
+Testing locally
+---------------
 
-This role is already configured to run on travis CI within a test playbook but it's useful to be able to run and debug a role locally which can be done via Vagrant and the `ansible_local` provisioner.
+This role is already configured to run on travis CI within a test playbook but it's useful to be able to run and debug a role locally.
 
 To run the test playbook locally within a Vagrant virtual machine:
 
-```
-cd tests
-vagrant up --provision
+```shell
+pipenv install --dev
+pipenv run molecule test -s default
 ```
 
-## License
+License
+-------
 
 [BSD](https://raw.githubusercontent.com/nickhammond/logrotate/master/LICENSE)
 
-## Author Information
+Author Information
+------------------
 
 * [nickhammond](https://github.com/nickhammond) | [www](http://www.nickhammond.com) | [twitter](http://twitter.com/nickhammond)
 * [bigjust](https://github.com/bigjust)
@@ -107,3 +119,4 @@ vagrant up --provision
 * [jeancornic](https://github.com/jeancornic)
 * [duhast](https://github.com/duhast)
 * [kagux](https://github.com/kagux)
+* [joelbcastillo](https://github.com/joelbcastillo)

@@ -1,0 +1,511 @@
+[
+  {
+    "AmiLaunchIndex": 0,
+    "ImageId": "ami-0015fcaa5516c75ed",
+    "InstanceId": "i-0bcdb1ec5fd933525",
+    "InstanceType": "t2.large",
+    "KeyName": "gpp_hyrax_tst_jon_deployer",
+    "LaunchTime": "2020-05-12T20:59:24+00:00",
+    "Monitoring": {
+      "State": "disabled"
+    },
+    "Placement": {
+      "AvailabilityZone": "us-east-1b",
+      "GroupName": "",
+      "Tenancy": "default"
+    },
+    "PrivateDnsName": "ip-10-138-111-175.ec2.internal",
+    "PrivateIpAddress": "10.138.111.175",
+    "ProductCodes": [],
+    "PublicDnsName": "",
+    "State": {
+      "Code": 16,
+      "Name": "running"
+    },
+    "StateTransitionReason": "",
+    "SubnetId": "subnet-011a776477132765a",
+    "VpcId": "vpc-04a321d7bfccc08c9",
+    "Architecture": "x86_64",
+    "BlockDeviceMappings": [
+      {
+        "DeviceName": "/dev/sda1",
+        "Ebs": {
+          "AttachTime": "2020-05-12T20:59:25+00:00",
+          "DeleteOnTermination": true,
+          "Status": "attached",
+          "VolumeId": "vol-0bdffadc8e5980f2a"
+        }
+      },
+      {
+        "DeviceName": "/dev/sdb",
+        "Ebs": {
+          "AttachTime": "2020-05-12T20:59:55+00:00",
+          "DeleteOnTermination": false,
+          "Status": "attached",
+          "VolumeId": "vol-084932402c9e6cbfd"
+        }
+      }
+    ],
+    "ClientToken": "",
+    "EbsOptimized": false,
+    "EnaSupport": true,
+    "Hypervisor": "xen",
+    "NetworkInterfaces": [
+      {
+        "Attachment": {
+          "AttachTime": "2020-05-12T20:59:24+00:00",
+          "AttachmentId": "eni-attach-0df3d662aa60c1342",
+          "DeleteOnTermination": false,
+          "DeviceIndex": 0,
+          "Status": "attached"
+        },
+        "Description": "",
+        "Groups": [
+          {
+            "GroupName": "SSH",
+            "GroupId": "sg-0460e5ee435862e39"
+          }
+        ],
+        "Ipv6Addresses": [],
+        "MacAddress": "0e:3f:c4:63:d8:37",
+        "NetworkInterfaceId": "eni-0663d3af59d512289",
+        "OwnerId": "972051439249",
+        "PrivateDnsName": "ip-10-138-111-175.ec2.internal",
+        "PrivateIpAddress": "10.138.111.175",
+        "PrivateIpAddresses": [
+          {
+            "Primary": true,
+            "PrivateDnsName": "ip-10-138-111-175.ec2.internal",
+            "PrivateIpAddress": "10.138.111.175"
+          }
+        ],
+        "SourceDestCheck": true,
+        "Status": "in-use",
+        "SubnetId": "subnet-011a776477132765a",
+        "VpcId": "vpc-04a321d7bfccc08c9",
+        "InterfaceType": "interface"
+      },
+      {
+        "Attachment": {
+          "AttachTime": "2020-05-12T20:59:45+00:00",
+          "AttachmentId": "eni-attach-0e8e86108721c47cb",
+          "DeleteOnTermination": false,
+          "DeviceIndex": 1,
+          "Status": "attached"
+        },
+        "Description": "",
+        "Groups": [
+          {
+            "GroupName": "GPP Hyrax TST JON (Postgresql)",
+            "GroupId": "sg-012315d144f00ed94"
+          },
+          {
+            "GroupName": "GPP Hyrax TST JON (Solr)",
+            "GroupId": "sg-0b68f080a6c077e11"
+          },
+          {
+            "GroupName": "Application Vulnerability Scans",
+            "GroupId": "sg-0a006b96bcbd605ff"
+          }
+        ],
+        "Ipv6Addresses": [],
+        "MacAddress": "0e:5f:44:5c:3a:b7",
+        "NetworkInterfaceId": "eni-09883038ea5aa6055",
+        "OwnerId": "972051439249",
+        "PrivateDnsName": "ip-10-138-111-166.ec2.internal",
+        "PrivateIpAddress": "10.138.111.166",
+        "PrivateIpAddresses": [
+          {
+            "Primary": true,
+            "PrivateDnsName": "ip-10-138-111-166.ec2.internal",
+            "PrivateIpAddress": "10.138.111.166"
+          }
+        ],
+        "SourceDestCheck": true,
+        "Status": "in-use",
+        "SubnetId": "subnet-011a776477132765a",
+        "VpcId": "vpc-04a321d7bfccc08c9",
+        "InterfaceType": "interface"
+      }
+    ],
+    "RootDeviceName": "/dev/sda1",
+    "RootDeviceType": "ebs",
+    "SecurityGroups": [
+      {
+        "GroupName": "SSH",
+        "GroupId": "sg-0460e5ee435862e39"
+      }
+    ],
+    "SourceDestCheck": true,
+    "Tags": [
+      {
+        "Key": "Environment",
+        "Value": "Test"
+      },
+      {
+        "Key": "Application",
+        "Value": "GPP Hyrax (Fedora + Postgres + Solr)"
+      },
+      {
+        "Key": "Name",
+        "Value": "GPP Hyrax Storage Server"
+      },
+      {
+        "Key": "Developer",
+        "Value": "jyu@records.nyc.gov"
+      }
+    ],
+    "VirtualizationType": "hvm",
+    "CpuOptions": {
+      "CoreCount": 2,
+      "ThreadsPerCore": 1
+    },
+    "CapacityReservationSpecification": {
+      "CapacityReservationPreference": "open"
+    },
+    "HibernationOptions": {
+      "Configured": false
+    },
+    "MetadataOptions": {
+      "State": "applied",
+      "HttpTokens": "optional",
+      "HttpPutResponseHopLimit": 1,
+      "HttpEndpoint": "enabled"
+    }
+  }
+]
+[
+  {
+    "AmiLaunchIndex": 0,
+    "ImageId": "ami-0015fcaa5516c75ed",
+    "InstanceId": "i-00dc1769f4b21ab0f",
+    "InstanceType": "t2.xlarge",
+    "KeyName": "gpp_hyrax_tst_jon_deployer",
+    "LaunchTime": "2020-05-12T20:59:24+00:00",
+    "Monitoring": {
+      "State": "disabled"
+    },
+    "Placement": {
+      "AvailabilityZone": "us-east-1b",
+      "GroupName": "",
+      "Tenancy": "default"
+    },
+    "PrivateDnsName": "ip-10-138-111-199.ec2.internal",
+    "PrivateIpAddress": "10.138.111.199",
+    "ProductCodes": [],
+    "PublicDnsName": "",
+    "State": {
+      "Code": 16,
+      "Name": "running"
+    },
+    "StateTransitionReason": "",
+    "SubnetId": "subnet-011a776477132765a",
+    "VpcId": "vpc-04a321d7bfccc08c9",
+    "Architecture": "x86_64",
+    "BlockDeviceMappings": [
+      {
+        "DeviceName": "/dev/sda1",
+        "Ebs": {
+          "AttachTime": "2020-05-12T20:59:25+00:00",
+          "DeleteOnTermination": true,
+          "Status": "attached",
+          "VolumeId": "vol-07503b9d731ea5622"
+        }
+      },
+      {
+        "DeviceName": "/dev/sdb",
+        "Ebs": {
+          "AttachTime": "2020-05-12T20:59:49+00:00",
+          "DeleteOnTermination": false,
+          "Status": "attached",
+          "VolumeId": "vol-0b44800513ebe7cc3"
+        }
+      }
+    ],
+    "ClientToken": "",
+    "EbsOptimized": false,
+    "EnaSupport": true,
+    "Hypervisor": "xen",
+    "NetworkInterfaces": [
+      {
+        "Attachment": {
+          "AttachTime": "2020-05-12T20:59:24+00:00",
+          "AttachmentId": "eni-attach-080b8eb59177ed1c8",
+          "DeleteOnTermination": false,
+          "DeviceIndex": 0,
+          "Status": "attached"
+        },
+        "Description": "",
+        "Groups": [
+          {
+            "GroupName": "SSH",
+            "GroupId": "sg-0460e5ee435862e39"
+          }
+        ],
+        "Ipv6Addresses": [],
+        "MacAddress": "0e:1a:0c:1d:7e:a7",
+        "NetworkInterfaceId": "eni-0b47a59401475212e",
+        "OwnerId": "972051439249",
+        "PrivateDnsName": "ip-10-138-111-199.ec2.internal",
+        "PrivateIpAddress": "10.138.111.199",
+        "PrivateIpAddresses": [
+          {
+            "Primary": true,
+            "PrivateDnsName": "ip-10-138-111-199.ec2.internal",
+            "PrivateIpAddress": "10.138.111.199"
+          }
+        ],
+        "SourceDestCheck": true,
+        "Status": "in-use",
+        "SubnetId": "subnet-011a776477132765a",
+        "VpcId": "vpc-04a321d7bfccc08c9",
+        "InterfaceType": "interface"
+      },
+      {
+        "Attachment": {
+          "AttachTime": "2020-05-12T20:59:39+00:00",
+          "AttachmentId": "eni-attach-0fad92ae6d18b2d86",
+          "DeleteOnTermination": false,
+          "DeviceIndex": 1,
+          "Status": "attached"
+        },
+        "Description": "",
+        "Groups": [
+          {
+            "GroupName": "GPP Hyrax TST JON (Hyrax)",
+            "GroupId": "sg-004b6be4e93610108"
+          },
+          {
+            "GroupName": "Application Vulnerability Scans",
+            "GroupId": "sg-0a006b96bcbd605ff"
+          }
+        ],
+        "Ipv6Addresses": [],
+        "MacAddress": "0e:99:f6:13:e1:3b",
+        "NetworkInterfaceId": "eni-068b14790762aef3f",
+        "OwnerId": "972051439249",
+        "PrivateDnsName": "ip-10-138-111-139.ec2.internal",
+        "PrivateIpAddress": "10.138.111.139",
+        "PrivateIpAddresses": [
+          {
+            "Primary": true,
+            "PrivateDnsName": "ip-10-138-111-139.ec2.internal",
+            "PrivateIpAddress": "10.138.111.139"
+          }
+        ],
+        "SourceDestCheck": true,
+        "Status": "in-use",
+        "SubnetId": "subnet-011a776477132765a",
+        "VpcId": "vpc-04a321d7bfccc08c9",
+        "InterfaceType": "interface"
+      }
+    ],
+    "RootDeviceName": "/dev/sda1",
+    "RootDeviceType": "ebs",
+    "SecurityGroups": [
+      {
+        "GroupName": "SSH",
+        "GroupId": "sg-0460e5ee435862e39"
+      }
+    ],
+    "SourceDestCheck": true,
+    "Tags": [
+      {
+        "Key": "Application",
+        "Value": "GPP Hyrax (Hyrax)"
+      },
+      {
+        "Key": "Environment",
+        "Value": "Test"
+      },
+      {
+        "Key": "Name",
+        "Value": "GPP Hyrax App Server"
+      },
+      {
+        "Key": "Developer",
+        "Value": "jyu@records.nyc.gov"
+      }
+    ],
+    "VirtualizationType": "hvm",
+    "CpuOptions": {
+      "CoreCount": 4,
+      "ThreadsPerCore": 1
+    },
+    "CapacityReservationSpecification": {
+      "CapacityReservationPreference": "open"
+    },
+    "HibernationOptions": {
+      "Configured": false
+    },
+    "MetadataOptions": {
+      "State": "applied",
+      "HttpTokens": "optional",
+      "HttpPutResponseHopLimit": 1,
+      "HttpEndpoint": "enabled"
+    }
+  }
+]
+[
+  {
+    "AmiLaunchIndex": 0,
+    "ImageId": "ami-0015fcaa5516c75ed",
+    "InstanceId": "i-01360d2bbd7713a11",
+    "InstanceType": "t2.small",
+    "KeyName": "gpp_hyrax_tst_jon_deployer",
+    "LaunchTime": "2020-05-12T20:59:24+00:00",
+    "Monitoring": {
+      "State": "disabled"
+    },
+    "Placement": {
+      "AvailabilityZone": "us-east-1a",
+      "GroupName": "",
+      "Tenancy": "default"
+    },
+    "PrivateDnsName": "ip-10-138-111-72.ec2.internal",
+    "PrivateIpAddress": "10.138.111.72",
+    "ProductCodes": [],
+    "PublicDnsName": "",
+    "State": {
+      "Code": 16,
+      "Name": "running"
+    },
+    "StateTransitionReason": "",
+    "SubnetId": "subnet-047eed88be500f7a8",
+    "VpcId": "vpc-04a321d7bfccc08c9",
+    "Architecture": "x86_64",
+    "BlockDeviceMappings": [
+      {
+        "DeviceName": "/dev/sda1",
+        "Ebs": {
+          "AttachTime": "2020-05-12T20:59:25+00:00",
+          "DeleteOnTermination": true,
+          "Status": "attached",
+          "VolumeId": "vol-0acdbb0e5be02bde7"
+        }
+      }
+    ],
+    "ClientToken": "",
+    "EbsOptimized": false,
+    "EnaSupport": true,
+    "Hypervisor": "xen",
+    "NetworkInterfaces": [
+      {
+        "Attachment": {
+          "AttachTime": "2020-05-12T20:59:24+00:00",
+          "AttachmentId": "eni-attach-09629ffd7fb5a634d",
+          "DeleteOnTermination": false,
+          "DeviceIndex": 0,
+          "Status": "attached"
+        },
+        "Description": "",
+        "Groups": [
+          {
+            "GroupName": "SSH",
+            "GroupId": "sg-0460e5ee435862e39"
+          }
+        ],
+        "Ipv6Addresses": [],
+        "MacAddress": "0a:07:e1:7b:0c:15",
+        "NetworkInterfaceId": "eni-09229cf83d053b732",
+        "OwnerId": "972051439249",
+        "PrivateDnsName": "ip-10-138-111-72.ec2.internal",
+        "PrivateIpAddress": "10.138.111.72",
+        "PrivateIpAddresses": [
+          {
+            "Primary": true,
+            "PrivateDnsName": "ip-10-138-111-72.ec2.internal",
+            "PrivateIpAddress": "10.138.111.72"
+          }
+        ],
+        "SourceDestCheck": true,
+        "Status": "in-use",
+        "SubnetId": "subnet-047eed88be500f7a8",
+        "VpcId": "vpc-04a321d7bfccc08c9",
+        "InterfaceType": "interface"
+      },
+      {
+        "Attachment": {
+          "AttachTime": "2020-05-12T20:59:56+00:00",
+          "AttachmentId": "eni-attach-008fc90284ccd203a",
+          "DeleteOnTermination": false,
+          "DeviceIndex": 1,
+          "Status": "attached"
+        },
+        "Description": "",
+        "Groups": [
+          {
+            "GroupName": "GPP Hyrax TST JON (Nginx)",
+            "GroupId": "sg-0014f5fda267c30ef"
+          },
+          {
+            "GroupName": "Application Vulnerability Scans",
+            "GroupId": "sg-0a006b96bcbd605ff"
+          }
+        ],
+        "Ipv6Addresses": [],
+        "MacAddress": "0a:62:5c:54:24:b1",
+        "NetworkInterfaceId": "eni-013c6e3e5eab398fc",
+        "OwnerId": "972051439249",
+        "PrivateDnsName": "ip-10-138-111-111.ec2.internal",
+        "PrivateIpAddress": "10.138.111.111",
+        "PrivateIpAddresses": [
+          {
+            "Primary": true,
+            "PrivateDnsName": "ip-10-138-111-111.ec2.internal",
+            "PrivateIpAddress": "10.138.111.111"
+          }
+        ],
+        "SourceDestCheck": true,
+        "Status": "in-use",
+        "SubnetId": "subnet-047eed88be500f7a8",
+        "VpcId": "vpc-04a321d7bfccc08c9",
+        "InterfaceType": "interface"
+      }
+    ],
+    "RootDeviceName": "/dev/sda1",
+    "RootDeviceType": "ebs",
+    "SecurityGroups": [
+      {
+        "GroupName": "SSH",
+        "GroupId": "sg-0460e5ee435862e39"
+      }
+    ],
+    "SourceDestCheck": true,
+    "Tags": [
+      {
+        "Key": "Application",
+        "Value": "GPP Hyrax (Nginx)"
+      },
+      {
+        "Key": "Developer",
+        "Value": "jyu@records.nyc.gov"
+      },
+      {
+        "Key": "Name",
+        "Value": "GPP Hyrax Web Server"
+      },
+      {
+        "Key": "Environment",
+        "Value": "Test"
+      }
+    ],
+    "VirtualizationType": "hvm",
+    "CpuOptions": {
+      "CoreCount": 1,
+      "ThreadsPerCore": 1
+    },
+    "CapacityReservationSpecification": {
+      "CapacityReservationPreference": "open"
+    },
+    "HibernationOptions": {
+      "Configured": false
+    },
+    "MetadataOptions": {
+      "State": "applied",
+      "HttpTokens": "optional",
+      "HttpPutResponseHopLimit": 1,
+      "HttpEndpoint": "enabled"
+    }
+  }
+]

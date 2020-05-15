@@ -1,0 +1,47 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+
+  vars:
+    # Role: logrotate
+    logrotate_support_hourly_rotation: true
+    logrotate_scripts:
+      - name: nginx-options
+        path: /var/log/nginx/options.log
+        options:
+          - daily
+
+      - name: nginx-scripts
+        path: /var/log/nginx/scripts.log
+        scripts:
+          postrotate:
+            - echo test
+            - echo hello
+
+      - name: multiple-paths
+        paths:
+          - /var/log/nginx/options.log
+          - /var/log/nginx/scripts.log
+        options:
+          - hourly
+
+  roles:
+    - role: nycrecords.rhsm
+    - role: ansible-role-logrotate
+
+  tasks:
+    - name: Create sample directory for testing
+      file:
+        path: "{{ item }}"
+        state: directory
+      loop:
+        - /var/log/nginx
+
+    - name: Setup sample logs for testing
+      file:
+        path: "{{ item }}"
+        state: touch
+      loop:
+        - /var/log/nginx/options.log
+        - /var/log/nginx/scripts.log

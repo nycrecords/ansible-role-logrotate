@@ -1,7 +1,11 @@
 ---
-- hosts: all
-  become: True
+- name: Converge
+  hosts: all
+  become: true
+
   vars:
+    # Role: logrotate
+    logrotate_support_hourly_rotation: true
     logrotate_scripts:
       - name: nginx-options
         path: /var/log/nginx/options.log
@@ -11,19 +15,18 @@
       - name: nginx-scripts
         path: /var/log/nginx/scripts.log
         scripts:
-          postrotate: "echo test"
+          postrotate:
+            - echo test
+            - echo hello
 
       - name: multiple-paths
         paths:
           - /var/log/nginx/options.log
           - /var/log/nginx/scripts.log
+        options:
+          - hourly
+
 
   roles:
-    - ansible-logrotate
-
-  tasks:
-    - name: Verify logrotate config check passes
-      shell: logrotate -d "{{ logrotate_conf_dir }}{{ item.name }}"
-      with_items: "{{ logrotate_scripts }}"
-      register: logrotate_tests
-      failed_when: "'error' in logrotate_tests.stderr"
+    - role: nycrecords.yum_config_manager
+    - role: ansible-role-logrotate
